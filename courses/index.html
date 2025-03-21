@@ -18,11 +18,33 @@
     <!--link to JavaScript file-->
     <script src="/script.js" defer></script>
 
+    <!--import fonts from Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <!--navigation sidebar for each page-->
-
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a class="page-name" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="page-name" href="/courses">Add Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="page-name" href="/search">Classmates Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="page-name" href="/messages">View Messages</a>
+        </li>
+        <li class="nav-item log-out-item">
+          <a class="page-name log-out-name" href="/">Log out</a> <!--requires back-end log out action-->
+        </li>
+      </ul>
+    </nav>
 
     <!--courses content-->
         

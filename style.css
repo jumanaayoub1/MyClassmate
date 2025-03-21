@@ -2,7 +2,14 @@
 
 /*GENERAL*/
 
-/*import fonts*/
+/*FONT WEIGHTS*/
+
+/* Code from Google Fonts
+* Increments of 100
+* Thin: 100
+* Regular: 400
+* Bold: 700
+*/
 
 /*Remove default margin and padding*/
 * {
@@ -11,10 +18,66 @@
 }
 
 /*TEXT*/
+h1, h2, h3 {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
 
 /*BUTTONS*/
 
 /*NAVIGATION BAR*/
+
+nav {
+    width: 30vh;
+}
+
+.nav-list {
+  list-style-type: none;
+}
+
+.nav-item {
+    padding: 0.75rem;
+    border-right: 0.09rem solid #dddddd;
+    border-bottom: 0.09rem solid #dddddd;
+    background-color: #f5f5f5;
+}
+
+.log-out-item {
+    background-color: #ba4533;
+}
+
+.page-name {
+    text-decoration: none;
+    color: #0055A2;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.log-out-name {
+    color: #FFFFFF;
+}
+
+.page-name:hover {
+    color: #1b88f4;
+}
+
+.log-out-name:hover {
+    color: #FFFFFF;
+}
 
 /*LOG IN PAGE*/
 
