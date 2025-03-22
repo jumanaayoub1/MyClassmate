@@ -30,28 +30,23 @@
 
     <main>
       <!--log in content-->
-        
-        <!--rectangle-->
-    
-        <!--ID number-->
-        
-        <!--password (Will not actually use students' real passwords)-->
-
-        <!--sign in button-->
       <div id="log-in-input-section">
         <div id="log-in-rectangle">
           <p id="log-in-text">Sign In</p>
           <!--BACKEND: show "Unable to sign in" only after pressing sign in button and id and password do not work-->
           <p id="error-message"></p> 
+          <!--ID number-->
           <label for="id-input">SJSU ID Number</label>
           <p>#########</p>
           <input type="text" id="id-input">
           <div class="gap"></div>
           <label for="password-input">Password</label>
+          <!--password (Will not actually use students' real passwords)-->
           <!--BACKEND: Decide easiest way to simulate password-->
           <p>Last 4 digits of SJSU ID Number</p>
           <input type="password" id="password-input">
 
+          <!--sign in button-->
           <!--BACKEND: verify id and password work, and then send to the next page-->
           <!--BACKEND: update onclick to method-->
           <button id="log-in-button" onclick="location.href='/courses'">Sign In</button>
