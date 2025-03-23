@@ -50,11 +50,20 @@ input {
 }
 
 /*BUTTONS*/
-
+button {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    background-color: #1662dd;
+    color:#FFFFFF;
+    border: none;
+    border-radius: 5%;
+}
 /*NAVIGATION BAR*/
 
 nav {
-    width: 30vh;
+    width: 35vh;
 }
 
 .nav-list {
@@ -123,25 +132,33 @@ nav {
 
 }
 
-#log-in-button {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-top: 1rem;
-    width: 100%;
-    background-color: #1662dd;
-    color:#FFFFFF;
-    border: none;
-    border-radius: 5%;
-}
-
 .gap {
     margin: 1rem;
 }
 
 /*PROFILE PAGE*/
 
-/*COURSES PAGE*/
+/*INFORMATION PAGE*/
+.container {
+    display: flex;
+}
 
-/*SEARCH PAGE*/
+.with-side-nav {
+    width: 100%;
+}
+
+.title-section {
+    width: 100%;
+    padding: 1rem;
+    background-color: #1662dd; 
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.main-content {
+    margin: 1rem;
+}
+
+/*CLASSMATES PAGE*/
 
 /*MESSAGES PAGE*/

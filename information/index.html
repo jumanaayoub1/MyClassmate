@@ -25,43 +25,93 @@
   </head>
 
   <body>
-    <!--navigation sidebar for each page-->
-    <nav>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="page-name" href="/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="page-name" href="/information">Add / Search</a>
-        </li>
-        <li class="nav-item">
-          <a class="page-name" href="/classmates">Classmates</a>
-        </li>
-        <li class="nav-item">
-          <a class="page-name" href="/messages">View Messages</a>
-        </li>
-        <li class="nav-item log-out-item">
-          <!--BACKEND: log out user-->
-          <a class="page-name log-out-name" href="/">Log out</a>
-        </li>
-      </ul>
-    </nav>
+    <div class = "container">
+      <!--navigation sidebar for each page-->
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a class="page-name" href="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="page-name" href="/information">Add / Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="page-name" href="/classmates">Classmates</a>
+          </li>
+          <li class="nav-item">
+            <a class="page-name" href="/messages">View Messages</a>
+          </li>
+          <li class="nav-item log-out-item">
+            <!--BACKEND: log out user-->
+            <a class="page-name log-out-name" href="/">Log out</a>
+          </li>
+        </ul>
+      </nav>
 
-    <header>
+      <div class="with-side-nav" >
+        <header class="title-with-side-nav">
+          <div class="title-section">
+            <h1>Add / Search</h1>
+          </div>
+        </header>
+    
+        <main class="main-with-side-nav">
+          <!--courses content-->
+          <div class="main-content">
+            <!--name-->
+            <label for="name-input">Name</label>
+            <p>First Last</p>
+            <input type="text" id="name-input">
+            
+            <div class="gap"></div>
 
-    </header>
+            <!--major-->
+            <label for="major-input">Major</label>
+            <p>Abbreviation (ex: CE, IE, SE)</p>
+            <input type="text" id="major-input">
+            
+            <div class="gap"></div>
 
-    <main>
-        <!--courses content-->
-        
-          <!--term-->
+            <!--term-->
+            <label for="term-input">Term</label>
+            <p>Abbreviation (ex: S25)</p>
+            <input type="text" id="term-input">
+            
+            <div class="gap"></div>
 
-          <!--subject-->
-        
-          <!--course number-->
+            <!--course subject-->
+            <label for="course-subject-input">Course Subject</label>
+            <p>Abbreviation (ex: CS, CMPE)</p>
+            <input type="text" id="course-name-input">
 
-          <!--add button-->
-    </main>
+            <div class="gap"></div>
+            
+            <!--course number-->
+            <label for="course-number-input">Course Number</label>
+            <p>(ex: 146)</p>
+            <input type="text" id="course-number-input">
+            
+            <div class="gap"></div>
+
+            <!--course section-->
+            <label for="course-section-input">Course Section</label>
+            <p>(ex: 3)</p>
+            <input type="text" id="course-section-input">
+            
+            <!--buttons-->
+            <div class="container">
+              <!--BACKEND: update user profile with the entered information-->
+              <button class="button" id="update-profile-button" onclick="location.href='/profile'">Update Profile</button>
+              <div class="gap"></div>
+              <!--BACKEND: show classmates with the entered information-->
+              <button class="button" id="search-button" onclick="location.href='/classmates'">Search Classmates</button>
+            </div>
+
+          </div>
+        </main>
+      </div>
+    </div>
+    
 
   </body>
 
