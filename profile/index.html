@@ -25,42 +25,167 @@
   </head>
 
   <body>
-    <!--navigation sidebar for each page-->
-    <nav>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="page-name" href="/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="page-name" href="/information">Add / Search</a>
-        </li>
-        <li class="nav-item">
-          <a class="page-name" href="/classmates">Classmates</a>
-        </li>
-        <li class="nav-item">
-          <a class="page-name" href="/messages">View Messages</a>
-        </li>
-        <li class="nav-item log-out-item">
-          <!--BACKEND: log out user-->
-          <a class="page-name log-out-name" href="/">Log out</a> 
-        </li>
-      </ul>
-    </nav>
+    <div class = "container">
+      <!--navigation sidebar for each page-->
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a class="page-name" href="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="page-name" href="/information">Add / Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="page-name" href="/classmates">Classmates</a>
+          </li>
+          <li class="nav-item">
+            <a class="page-name" href="/messages">View Messages</a>
+          </li>
+          <li class="nav-item log-out-item">
+            <!--BACKEND: log out user-->
+            <a class="page-name log-out-name" href="/">Log out</a>
+          </li>
+        </ul>
+      </nav>
 
-    <!--profile content-->
+      <!--profile content-->
+      <!--BACKEND: update HTML with profile name and major-->
+      <div class="with-side-nav" >
+        <header class="title-with-side-nav">
+          <div class="title-section">
+            <!--name-->
+            <h1>Name</h1>
+            <!--major-->
+            <h2>Major</h2>
+          </div>
+        </header>
+    
+        <main class="main-with-side-nav">
+          <!--profile main content-->
+          <div class="main-content">
+            <!--profile visibility options for user's profile only-->
+            <!--BACKEND: if this profile is user's profile, show profile visibility section-->
+            <!--BACKEND: if user selects one of the options for profile visibility, automatically update profile visibility-->
+            <div id="profile-visibility-section">
+              <h3>Profile Visibility</h3>
 
-    <header>
-        <!--icon-->
+              <div class="gap"></div>
 
-        <!--name-->
+              <label for="profile-visibility">Visible to:</label>
+              <select name="profile-visibility" id="profile-visibility">
+                <option value="only me">Only Me</option>
+                <option value="only friends">Only Friends</option>
+                <option value="everyone">Everyone</option>
+              </select>
+            </div>
+            
+            <div class="gap"></div>
 
-        <!--major-->
-    </header> 
+            <!--friend request section-->
+            <!--BACKEND: if this profile is user's profile, hide section-->
+            <button id="profile-friend-request-section">Send Friend Request</button>
+
+            <div class="gap"></div>
+
+            <!--courses section-->
+            <h3>Courses</h3>
+            <!--BACKEND: show course database for user for selected term-->
+            <label for="profile-courses-term"></label>
+            <select name="profile-courses-term" id="profile-courses-term">
+              <option value="s25">Spring 2025</option>
+              <option value="f24">Fall 2024</option>
+            </select>
+
+            <div class="gap"></div>
+
+            <!--BACKEND: retrieve courses for the user and display in the table-->
+            <table>
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>Find Classmates</th>
+                  <th>Remove Course</th>
+                </tr>
+              </thead>
+              <tr>
+                <td>CMPE 131-3</td> <!--Subject Number-Section; maybe put this class by default-->
+                <td>
+                  <!--BACKEND: searches for classmates in the course without the user manually typing info in-->
+                  <!--even when viewing classmates's profile, may be valuable to user to find other classmates-->
+                  <button onclick="location.href='/classmates'">Search</button>
+                </td>
+                <!--BACKEND: if this profile is user's profile, show remove button to delete course-->
+                <!--if this profile is not user's profile, hide column from view-->
+                <td>
+                  <button>Remove</button>
+                </td>
+              </tr>
+            </table>
+            
+            <div class="gap"></div>
+
+            <!--friends section-->
+            <!--BACKEND: if this profile is not user's profile, hide entire section-->
+            <div id="profile-friends-section">
+              <h3>Friends</h3>
+              <!--BACKEND: show friends of the user and display in the table-->
+              <table>
+                <thead>
+                  <tr>
+                    <th>Friend</th>
+                    <th>View Profile</th>
+                    <th>Remove Friend</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>Friend</td> <!--do not put this by default-->
+                  <td>
+                    <!--BACKEND: goes to friend's profile without the user manually typing info in-->
+                    <button onclick="location.href='/profile'">Profile</button>
+                  </td>
+                  <!--BACKEND: unfriend-->
+                  <td>
+                    <button>Remove</button>
+                  </td>
+                </tr>
+              </table>
+              
+              <div class="gap"></div>
+
+              <h3>Friend Requests</h3>
+              <!--BACKEND: show friend requests sent to the user and display in the table-->
+              <table>
+                <thead>
+                  <tr>
+                    <th>Friend</th>
+                    <th>View Profile</th>
+                    <th>Accept Request</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>Friend</td> <!--do not put this by default-->
+                  <td>
+                    <!--BACKEND: goes to friend's profile without the user manually typing info in-->
+                    <button onclick="location.href='/profile'">Profile</button>
+                  </td>
+                  <!--BACKEND: add to both users' lists of friends-->
+                  <td>
+                    <button>Accept</button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    
+    
+
+
 
     <main>
-        <!--profile visibility (only me, only friends, everyone)-->
-
-        <!--courses-->
+        
 
         <!--friends list-->
             <!--add or remove friends-->

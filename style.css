@@ -43,7 +43,7 @@ label {
     font-variation-settings: "wdth" 100;
 }
 
-input {
+input[type=text], input[type=password]{
     box-sizing: border-box;
     padding: 0.6rem;
     width: 100%;
@@ -137,6 +137,9 @@ nav {
 }
 
 /*PROFILE PAGE*/
+#profile-visibility-section {
+    text-align: center;
+}
 
 /*INFORMATION PAGE*/
 .container {
@@ -157,6 +160,17 @@ nav {
 
 .main-content {
     margin: 1rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 0.1rem solid #000000;
+    padding: 0.5rem;
+    width: 33%;
 }
 
 /*CLASSMATES PAGE*/
