@@ -17,6 +17,10 @@
     padding: 0;
 }
 
+.gap {
+    margin: 1rem;
+}
+
 /*TEXT*/
 h1, h2, h3 {
     font-family: "Roboto", sans-serif;
@@ -132,10 +136,6 @@ nav {
 
 }
 
-.gap {
-    margin: 1rem;
-}
-
 /*PROFILE PAGE*/
 #profile-visibility-section {
     text-align: center;
@@ -187,7 +187,7 @@ th, td {
 
 }
 .classmate-result {
-    margin: 0 0.2rem;
+    margin: 0.2rem;
     padding: 0.5rem;
     border: 0.09rem solid #000000;
     border-radius: 5%;
