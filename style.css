@@ -26,7 +26,7 @@ h1, h2, h3 {
     font-variation-settings: "wdth" 100;
 }
 
-p {
+p, table {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -174,5 +174,25 @@ th, td {
 }
 
 /*CLASSMATES PAGE*/
+.classmates-section {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.classmates-container {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.classmate-result {
+    margin: 0 0.2rem;
+    padding: 0.5rem;
+    border: 0.09rem solid #000000;
+    border-radius: 5%;
+    min-width: fit-content;
+    flex: 20%;
+}
 
 /*MESSAGES PAGE*/
