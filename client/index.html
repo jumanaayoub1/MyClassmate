@@ -1,5 +1,5 @@
 <!--log in page content-->
-<!--websiteName.com-->
+<!--websiteName.com/client-->
 <!--user input of ID and password-->
 <!DOCTYPE html>
 <html>
@@ -13,10 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!--link to stylesheet-->
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/client/style.css" />
 
     <!--link to JavaScript file-->
-    <script src="/script.js" defer></script>
+    <script src="/client/script.js" defer></script>
 
   </head>
 
@@ -34,7 +34,8 @@
         <div id="log-in-rectangle">
           <p id="log-in-text">Sign In</p>
           <!--BACKEND: show "Unable to sign in" only after pressing sign in button and id and password do not work-->
-          <p id="error-message"></p> 
+          <p id="error-message">Error: Unable to Sign In</p> 
+          <div class="gap"></div>
           <!--ID number-->
           <label for="id-input">SJSU ID Number</label>
           <p>#########</p>
@@ -47,13 +48,11 @@
           <input type="password" id="password-input">
 
           <!--sign in button-->
-          <!--BACKEND: verify id and password work, and then send to the next page-->
+          <!--BACKEND: verify id and password work, and then send to the next page (information page)-->
           <!--BACKEND: update onclick to method-->
-          <button id="log-in-button" onclick="location.href='/information'">Sign In</button>
+          <button onclick="location.href='/client/information'">Sign In</button>
         </div>
       </div>
     </main>
-    
   </body>
-
 </html>

@@ -11,10 +11,14 @@
 * Bold: 700
 */
 
-/*Remove default margin and padding*/
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+.gap {
+    margin: 1rem;
 }
 
 /*TEXT*/
@@ -26,7 +30,7 @@ h1, h2, h3 {
     font-variation-settings: "wdth" 100;
 }
 
-p {
+p, table {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -43,18 +47,26 @@ label {
     font-variation-settings: "wdth" 100;
 }
 
-input {
-    box-sizing: border-box;
+input[type=text], input[type=password]{
     padding: 0.6rem;
     width: 100%;
 }
 
 /*BUTTONS*/
+button {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    background-color: #1662dd;
+    color:#FFFFFF;
+    border: none;
+    border-radius: 5%;
+}
 
 /*NAVIGATION BAR*/
-
-nav {
-    width: 30vh;
+nav, .sidebar {
+    width: 10rem;
 }
 
 .nav-list {
@@ -66,13 +78,14 @@ nav {
     border-right: 0.09rem solid #dddddd;
     border-bottom: 0.09rem solid #dddddd;
     background-color: #f5f5f5;
+    
 }
 
 .log-out-item {
     background-color: #ba4533;
 }
 
-.page-name {
+.page-name, .message-recipient-name{
     text-decoration: none;
     color: #0055A2;
     font-family: "Roboto", sans-serif;
@@ -86,12 +99,35 @@ nav {
     color: #FFFFFF;
 }
 
-.page-name:hover {
+.page-name:hover, .message-recipient-name:hover {
     color: #1b88f4;
 }
 
 .log-out-name:hover {
     color: #FFFFFF;
+}
+
+/*PAGE FORMATTING*/
+.container{
+    display: flex;
+    
+}
+
+.with-side-nav {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.title-section {
+    width: 100%;
+    padding: 1rem;
+    background-color: #1662dd; 
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.main-content {
+    margin: 1rem;
 }
 
 /*LOG IN PAGE*/
@@ -114,34 +150,73 @@ nav {
     border: 0.1rem solid #dddddd;
     border-radius: 1%;
     padding: 2rem;
-    padding-right: 2.3rem; /*avoid non-centered elements*/
 }
 
 #log-in-text {
     text-align: center;
     margin-bottom: 1rem;
-
-}
-
-#log-in-button {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-top: 1rem;
-    width: 100%;
-    background-color: #1662dd;
-    color:#FFFFFF;
-    border: none;
-    border-radius: 5%;
-}
-
-.gap {
-    margin: 1rem;
 }
 
 /*PROFILE PAGE*/
+#profile-visibility-section {
+    text-align: center;
+}
 
-/*COURSES PAGE*/
+/*INFORMATION PAGE*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
-/*SEARCH PAGE*/
+th, td {
+    border: 0.1rem solid #000000;
+    padding: 0.5rem;
+    width: 33%;
+}
+
+/*CLASSMATES PAGE*/
+.classmates-section {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.classmates-container {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.classmate-result {
+    margin: 0.2rem;
+    padding: 0.5rem;
+    border: 0.09rem solid #000000;
+    border-radius: 5%;
+    min-width: fit-content;
+    flex: 20%;
+}
 
 /*MESSAGES PAGE*/
+.message-recipient, #message-recipients-title {
+    padding: 0.75rem;
+    padding: 0.75rem;
+    border-right: 0.09rem solid #dddddd;
+    border-bottom: 0.09rem solid #dddddd;
+    background-color: #f5f5f5;
+}
+
+.message {
+    display: flex;
+    margin: 1rem 0;
+}
+
+.message-sender-name {
+    margin-right: 0.5rem;
+    font-weight: 600;
+}
+
+#message-draft {
+    position: fixed;
+    max-width: 87%;
+    bottom: 1rem;
+}

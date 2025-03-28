@@ -1,0 +1,118 @@
+<!--information page content-->
+<!--websiteName.com/client/information-->
+<!--user input for course and major information-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyClassmates</title>
+
+    <!--characters that can be used in HTML document-->
+    <meta charset="utf-8" />
+
+    <!--page made to match size of device screen-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--link to stylesheet-->
+    <link rel="stylesheet" href="/client/style.css" />
+
+    <!--link to JavaScript file-->
+    <script src="/client/script.js" defer></script>
+
+    <!--import fonts from Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class = "container">
+      <!--navigation sidebar for each page-->
+      <div class="sidebar">
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a class="page-name" href="/client/profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/client/information">Add / Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/client/classmates">Classmates</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/client/messages">View Messages</a>
+            </li>
+            <li class="nav-item log-out-item">
+              <!--BACKEND: log out user-->
+              <a class="page-name log-out-name" href="/client">Log out</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="with-side-nav" >
+        <header class="title-with-side-nav">
+          <div class="title-section">
+            <h1>Add / Search</h1>
+          </div>
+        </header>
+    
+        <main class="main-with-side-nav">
+          <!--courses content-->
+          <div class="main-content">
+            <!--name-->
+            <label for="name-input">Name</label>
+            <p>First Last</p>
+            <input type="text" id="name-input">
+            
+            <div class="gap"></div>
+
+            <!--major-->
+            <label for="major-input">Major</label>
+            <p>Abbreviation (ex: CE, IE, SE)</p>
+            <input type="text" id="major-input">
+            
+            <div class="gap"></div>
+
+            <!--term-->
+            <label for="term-input">Term</label>
+            <p>Abbreviation (F24 or S25)</p>
+            <input type="text" id="term-input">
+            
+            <div class="gap"></div>
+
+            <!--course subject-->
+            <label for="course-subject-input">Course Subject</label>
+            <p>Abbreviation (ex: CMPE)</p>
+            <input type="text" id="course-name-input">
+
+            <div class="gap"></div>
+            
+            <!--course number-->
+            <label for="course-number-input">Course Number</label>
+            <p>(ex: 131)</p>
+            <input type="text" id="course-number-input">
+            
+            <div class="gap"></div>
+
+            <!--course section-->
+            <label for="course-section-input">Course Section</label>
+            <p>(ex: 3)</p>
+            <input type="text" id="course-section-input">
+            
+            <!--buttons-->
+            <div class="container">
+              <!--BACKEND: update user profile with the entered information and navigate to the page-->
+              <!--not all information needs to be inputted to work-->
+              <button id="update-profile-button" onclick="location.href='/client/profile'">Update Profile</button>
+              <div class="gap"></div>
+              <!--BACKEND: show classmates with the entered information and navigate to the page-->
+              <!--not all information needs to be inputted to work-->
+              <button id="search-button" onclick="location.href='/client/classmates'">Search Classmates</button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

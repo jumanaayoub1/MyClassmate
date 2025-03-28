@@ -1,0 +1,192 @@
+<!--log in page content-->
+<!--websiteName.com/client/profile-->
+<!--show user or other classmate's profile-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyClassmates</title>
+
+    <!--characters that can be used in HTML document-->
+    <meta charset="utf-8" />
+
+    <!--page made to match size of device screen-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--link to stylesheet-->
+    <link rel="stylesheet" href="/client/style.css" />
+
+    <!--link to JavaScript file-->
+    <script src="/client/script.js" defer></script>
+
+    <!--import fonts from Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class = "container">
+      <!--navigation sidebar for each page-->
+      <div class="sidebar">
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a class="page-name" href="/client/profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/client/information">Add / Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/client/classmates">Classmates</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/client/messages">View Messages</a>
+            </li>
+            <li class="nav-item log-out-item">
+              <!--BACKEND: log out user-->
+              <a class="page-name log-out-name" href="/client">Log out</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!--profile content-->
+      <!--BACKEND: update HTML with profile name and major-->
+      <div class="with-side-nav" >
+        <header class="title-with-side-nav">
+          <div class="title-section">
+            <!--name-->
+            <h1>[Name]</h1>
+            <!--major-->
+            <h2>[Major]</h2>
+          </div>
+        </header>
+    
+        <main class="main-with-side-nav">
+          <!--profile main content-->
+          <div class="main-content">
+            <!--profile visibility options for user's profile only-->
+            <!--BACKEND: if this profile is user's profile, show profile visibility section-->
+            <div id="profile-visibility-section">
+              <h3>Profile Visibility</h3>
+
+              <div class="gap"></div>
+              <!--BACKEND: if user selects one of the options for profile visibility, automatically update profile visibility-->
+              <label for="profile-visibility">Visible to:</label>
+              <select name="profile-visibility" id="profile-visibility">
+                <option value="only me">Only Me</option>
+                <option value="only friends">Only Friends</option>
+                <option value="everyone">Everyone</option>
+              </select>
+            </div>
+            
+            <div class="gap"></div>
+
+            <!--friend request section-->
+            <!--BACKEND: if this profile is user's profile, hide section-->
+            <button id="profile-friend-request-section">Send Friend Request</button>
+
+            <div class="gap"></div>
+
+            <!--courses section-->
+            <h3>Courses</h3>
+            <!--BACKEND: show course database for user for selected term-->
+            <label for="profile-courses-term"></label>
+            <select name="profile-courses-term" id="profile-courses-term">
+              <option value="s25">Spring 2025</option>
+              <option value="f24">Fall 2024</option>
+            </select>
+
+            <div class="gap"></div>
+
+            <!--BACKEND: retrieve courses for the user and display in the table-->
+            <!--BACKEND method: create table in method with appropriate number of rows-->
+              <table>
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>Find Classmates</th>
+                  <th>Remove Course</th>
+                </tr>
+              </thead>
+              <tr>
+                <td>[CMPE 131-3]</td> <!--Subject Number-Section; maybe put this class by default for Spring 2025-->
+                <td>
+                  <!--BACKEND: searches for classmates in the course without the user manually typing info in-->
+                  <!--retrieves information from the backend to complete the search and navigates to the page-->
+                  <!--even when viewing classmates's profile, may be valuable to user to find other classmates-->
+                  <button onclick="location.href='/client/classmates'">Search</button>
+                </td>
+                <!--BACKEND: if this profile is user's profile, remove button to delete course-->
+                <!--if this profile is not user's profile, do not create column-->
+                <td>
+                  <button>Remove</button>
+                </td>
+              </tr>
+            </table>
+            
+            <div class="gap"></div>
+
+            <!--friends section-->
+            <!--BACKEND: if this profile is not user's profile, hide entire section-->
+            <div id="profile-friends-section">
+              <h3>Friends</h3>
+              <!--BACKEND: show friends of the user and display in the table-->
+              <!--BACKEND method: create table in method with appropriate number of rows-->
+              <table>
+                <thead>
+                  <tr>
+                    <th>Friend</th>
+                    <th>View Profile</th>
+                    <th>Remove Friend</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <!--BACKEND: update HTML with friend's name-->
+                  <td>[Friend]</td>
+                  <td>
+                    <!--BACKEND: goes to friend's profile without the user manually typing info in-->
+                    <!--retrieves information from the backend to complete the search and navigates to the page-->
+                    <button onclick="location.href='/client/profile'">Profile</button>
+                  </td>
+                  <!--BACKEND: unfriend, remove users from both friends' list-->
+                  <td>
+                    <button>Remove</button>
+                  </td>
+                </tr>
+              </table>
+              
+              <div class="gap"></div>
+
+              <h3>Friend Requests</h3>
+              <!--BACKEND: show friend requests sent to the user and display in the table-->
+              <!--BACKEND method: create table in method with appropriate number of rows-->
+              <table>
+                <thead>
+                  <tr>
+                    <th>Friend</th>
+                    <th>View Profile</th>
+                    <th>Accept Request</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <!--BACKEND: update HTML with profile name and major-->
+                  <td>[Friend]</td>
+                  <td>
+                    <!--BACKEND: goes to friend's profile without the user manually typing info in-->
+                    <!--retrieves information from the backend to complete the search and navigates to the page-->
+                    <button onclick="location.href='/client/profile'">Profile</button>
+                  </td>
+                  <!--BACKEND: add to both users' lists of friends-->
+                  <td>
+                    <button>Accept</button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

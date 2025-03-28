@@ -1,0 +1,155 @@
+<!--search classmates page content-->
+<!--websiteName.com/client/classmates-->
+<!--search results from information page and/or recommended students-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyClassmates</title>
+
+    <!--characters that can be used in HTML document-->
+    <meta charset="utf-8" />
+
+    <!--page made to match size of device screen-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--link to stylesheet-->
+    <link rel="stylesheet" href="/client/style.css" />
+
+    <!--link to JavaScript file-->
+    <script src="/client/script.js" defer></script>
+
+    <!--import fonts from Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class = "container">
+      <!--navigation sidebar for each page-->
+      <div class="sidebar">
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a class="page-name" href="/client/profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/client/information">Add / Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/client/classmates">Classmates</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/client/messages">View Messages</a>
+            </li>
+            <li class="nav-item log-out-item">
+              <!--BACKEND: log out user-->
+              <a class="page-name log-out-name" href="/client">Log out</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+
+      <div class="with-side-nav" >
+        <header class="title-with-side-nav">
+          <div class="title-section">
+            <h1>My Classmates</h1>
+          </div>
+        </header>
+    
+        <main class="main-with-side-nav">
+          <!--results content-->
+          <div class="main-content">
+            <!--pseudo search bar-->
+            <!--navigate to add / search page for search queries-->
+            <button id="search-button" onclick="location.href='/client/information'">Search Classmates</button>
+        
+            <!--recommended classmates section-->
+            <!--BACKEND: if user entered search queries and was navigated to this page, hide this section-->
+            <!--if user clicked on classmates tab in the side navigation, show this section-->
+            <!--BACKEND: replace [] with names and majors-->
+            <div id="recommended-classmates-section" class="classmates-section">
+              <h3>Recommended Classmates</h3>
+              <div class="classmates-container">
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+              </div>
+            
+            <!--classmates search results section-->
+            <!--BACKEND: if user entered search queries and was navigated to this page, show this section-->
+            <!--if user clicked on classmates tab in the side navigation, hide this section-->
+            <!--BACKEND: replace [] with names and majors-->
+            <div id="search-classmates-section" class="classmates-section">
+              <h3>Classmates Search Results</h3>
+              <div class="classmates-container">
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+                <div class="classmate-result">
+                  <p>[Name]</p>
+                  <p>[Major]</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
