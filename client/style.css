@@ -11,7 +11,6 @@
 * Bold: 700
 */
 
-/*Remove default margin and padding*/
 * {
     margin: 0;
     padding: 0;
@@ -64,8 +63,8 @@ button {
     border: none;
     border-radius: 5%;
 }
-/*NAVIGATION BAR*/
 
+/*NAVIGATION BAR*/
 nav, .sidebar {
     width: 10rem;
 }
@@ -108,6 +107,29 @@ nav, .sidebar {
     color: #FFFFFF;
 }
 
+/*PAGE FORMATTING*/
+.container{
+    display: flex;
+    
+}
+
+.with-side-nav {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.title-section {
+    width: 100%;
+    padding: 1rem;
+    background-color: #1662dd; 
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.main-content {
+    margin: 1rem;
+}
+
 /*LOG IN PAGE*/
 #log-in-title-section {
     text-align: center;
@@ -141,28 +163,6 @@ nav, .sidebar {
 }
 
 /*INFORMATION PAGE*/
-.container{
-    display: flex;
-    
-}
-
-.with-side-nav {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-.title-section {
-    width: 100%;
-    padding: 1rem;
-    background-color: #1662dd; 
-    color: #FFFFFF;
-    text-align: center;
-}
-
-.main-content {
-    margin: 1rem;
-}
-
 table {
     border-collapse: collapse;
     width: 100%;
@@ -197,8 +197,6 @@ th, td {
 }
 
 /*MESSAGES PAGE*/
-
-
 .message-recipient, #message-recipients-title {
     padding: 0.75rem;
     padding: 0.75rem;
@@ -219,5 +217,6 @@ th, td {
 
 #message-draft {
     position: fixed;
+    max-width: 87%;
     bottom: 1rem;
 }

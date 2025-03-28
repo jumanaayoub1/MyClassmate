@@ -1,5 +1,5 @@
 <!--messages page content-->
-<!--websiteName.com/messages-->
+<!--websiteName.com/client/messages-->
 <!--show messages sent and received by the user-->
 <!DOCTYPE html>
 <html>
@@ -55,7 +55,7 @@
         </div>
 
         <!--BACKEND: replace [] with friends' name(s)-->
-        <!--BACKEND: if click on name(s), show messages on the right side-->
+        <!--BACKEND: if click on name(s), show messages to them on the right side-->
         <div id="message-recipients-list">
           <div class="message-recipient">
             <p class="message-recipient-name">[Classmate]</p>
@@ -99,6 +99,8 @@
           <!--results content-->
           <div class="main-content">
             <!--BACKEND: show messages sent between users-->
+            <!--BACKEND: replace [] with sender's name-->
+            <!--BACKEND: (optional) timestamp when message was sent (add: <p> tag, margin-right: 0.5rem in css)-->
             <div class="message">
               <p class="message-sender-name">[Name]</p>
               <p>[Message]</p>
@@ -107,19 +109,12 @@
               <p class="message-sender-name">[Name]</p>
               <p>[Message]</p>
             </div>
-            <input type="text" id="message-draft" placeholder="Message">
+            <div id="message-draft-section">
+              <input type="text" id="message-draft" placeholder="Message">
+            </div>
           </div>
         </main>
       </div>
     </div>
-    
-
-    <!--messages content-->
-
-        <!--friends / message recipients list sidebar-->
-
-        <!--messages with selected recipient / group chat-->
-
   </body>
-
 </html>
