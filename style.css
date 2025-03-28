@@ -15,6 +15,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .gap {
@@ -48,7 +49,6 @@ label {
 }
 
 input[type=text], input[type=password]{
-    box-sizing: border-box;
     padding: 0.6rem;
     width: 100%;
 }
@@ -66,8 +66,8 @@ button {
 }
 /*NAVIGATION BAR*/
 
-nav {
-    width: 35vh;
+nav, .sidebar {
+    width: 10rem;
 }
 
 .nav-list {
@@ -79,13 +79,14 @@ nav {
     border-right: 0.09rem solid #dddddd;
     border-bottom: 0.09rem solid #dddddd;
     background-color: #f5f5f5;
+    
 }
 
 .log-out-item {
     background-color: #ba4533;
 }
 
-.page-name {
+.page-name, .message-recipient-name{
     text-decoration: none;
     color: #0055A2;
     font-family: "Roboto", sans-serif;
@@ -99,7 +100,7 @@ nav {
     color: #FFFFFF;
 }
 
-.page-name:hover {
+.page-name:hover, .message-recipient-name:hover {
     color: #1b88f4;
 }
 
@@ -127,13 +128,11 @@ nav {
     border: 0.1rem solid #dddddd;
     border-radius: 1%;
     padding: 2rem;
-    padding-right: 2.3rem; /*avoid non-centered elements*/
 }
 
 #log-in-text {
     text-align: center;
     margin-bottom: 1rem;
-
 }
 
 /*PROFILE PAGE*/
@@ -142,12 +141,14 @@ nav {
 }
 
 /*INFORMATION PAGE*/
-.container {
+.container{
     display: flex;
+    
 }
 
 .with-side-nav {
     width: 100%;
+    overflow-x: hidden;
 }
 
 .title-section {
@@ -196,3 +197,27 @@ th, td {
 }
 
 /*MESSAGES PAGE*/
+
+
+.message-recipient, #message-recipients-title {
+    padding: 0.75rem;
+    padding: 0.75rem;
+    border-right: 0.09rem solid #dddddd;
+    border-bottom: 0.09rem solid #dddddd;
+    background-color: #f5f5f5;
+}
+
+.message {
+    display: flex;
+    margin: 1rem 0;
+}
+
+.message-sender-name {
+    margin-right: 0.5rem;
+    font-weight: 600;
+}
+
+#message-draft {
+    position: fixed;
+    bottom: 1rem;
+}

@@ -25,41 +25,100 @@
   </head>
 
   <body>
-    <!--navigation sidebar for each page-->
-    <nav>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="page-name" href="/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="page-name" href="/information">Add / Search</a>
-        </li>
-        <li class="nav-item">
-          <a class="page-name" href="/classmates">Classmates</a>
-        </li>
-        <li class="nav-item">
-          <a class="page-name" href="/messages">View Messages</a>
-        </li>
-        <li class="nav-item log-out-item">
-          <!--BACKEND: log out user-->
-          <a class="page-name log-out-name" href="/">Log out</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="container">
+      <div class="sidebar">
+        <!--navigation sidebar for each page-->
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a class="page-name" href="/profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/information">Add / Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/classmates">Classmates</a>
+            </li>
+            <li class="nav-item">
+              <a class="page-name" href="/messages">View Messages</a>
+            </li>
+            <li class="nav-item log-out-item">
+              <!--BACKEND: log out user-->
+              <a class="page-name log-out-name" href="/">Log out</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!--message recipients list-->
+        <div id="message-recipients-title">
+          <h3>Messages</h3>
+        </div>
+
+        <!--BACKEND: replace [] with friends' name(s)-->
+        <!--BACKEND: if click on name(s), show messages on the right side-->
+        <div id="message-recipients-list">
+          <div class="message-recipient">
+            <p class="message-recipient-name">[Classmate]</p>
+          </div>
+          <div class="message-recipient">
+            <p class="message-recipient-name">[Classmate1, Classmate2]</p>
+          </div>
+          <div class="message-recipient">
+            <p class="message-recipient-name">[Classmate1, Classmate2]</p>
+          </div>
+          <div class="message-recipient">
+            <p class="message-recipient-name">[Classmate1, Classmate2]</p>
+          </div>
+          <div class="message-recipient">
+            <p class="message-recipient-name">[Classmate1, Classmate2]</p>
+          </div>
+          <div class="message-recipient">
+            <p class="message-recipient-name">[Classmate1, Classmate2]</p>
+          </div>
+          <div class="message-recipient">
+            <p class="message-recipient-name">[Classmate1, Classmate2]</p>
+          </div>
+          <div class="message-recipient">
+            <p class="message-recipient-name">[Classmate1, Classmate2]</p>
+          </div>
+          <div class="message-recipient">
+            <p class="message-recipient-name">[Classmate1, Classmate2]</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="with-side-nav" >
+        <header class="title-with-side-nav">
+          <div class="title-section">
+            <!--BACKEND: (optional) click name to view profile-->
+            <h2>[Recipient(s)]</h2>
+          </div>
+        </header>
+    
+        <main class="main-with-side-nav">
+          <!--results content-->
+          <div class="main-content">
+            <!--BACKEND: show messages sent between users-->
+            <div class="message">
+              <p class="message-sender-name">[Name]</p>
+              <p>[Message]</p>
+            </div>
+            <div class="message">
+              <p class="message-sender-name">[Name]</p>
+              <p>[Message]</p>
+            </div>
+            <input type="text" id="message-draft" placeholder="Message">
+          </div>
+        </main>
+      </div>
+    </div>
+    
 
     <!--messages content-->
 
         <!--friends / message recipients list sidebar-->
 
         <!--messages with selected recipient / group chat-->
-
-    <header>
-
-    </header>
-
-    <main>
-
-    </main>
 
   </body>
 
