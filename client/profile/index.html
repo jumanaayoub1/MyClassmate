@@ -13,10 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!--link to stylesheet-->
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/client/style.css" />
 
     <!--link to JavaScript file-->
-    <script src="/script.js" defer></script>
+    <script src="/client/script.js" defer></script>
 
     <!--import fonts from Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,20 +31,20 @@
         <nav>
           <ul class="nav-list">
             <li class="nav-item">
-              <a class="page-name" href="/profile">Profile</a>
+              <a class="page-name" href="/client/profile">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="page-name" href="/information">Add / Search</a>
+              <a class="page-name" href="/client/information">Add / Search</a>
             </li>
             <li class="nav-item">
-              <a class="page-name" href="/classmates">Classmates</a>
+              <a class="page-name" href="/client/classmates">Classmates</a>
             </li>
             <li class="nav-item">
-              <a class="page-name" href="/messages">View Messages</a>
+              <a class="page-name" href="/client/messages">View Messages</a>
             </li>
             <li class="nav-item log-out-item">
               <!--BACKEND: log out user-->
-              <a class="page-name log-out-name" href="/">Log out</a>
+              <a class="page-name log-out-name" href="/client">Log out</a>
             </li>
           </ul>
         </nav>
@@ -114,7 +114,7 @@
                 <td>
                   <!--BACKEND: searches for classmates in the course without the user manually typing info in-->
                   <!--even when viewing classmates's profile, may be valuable to user to find other classmates-->
-                  <button onclick="location.href='/classmates'">Search</button>
+                  <button onclick="location.href='/client/classmates'">Search</button>
                 </td>
                 <!--BACKEND: if this profile is user's profile, show remove button to delete course-->
                 <!--if this profile is not user's profile, hide column from view-->
@@ -143,7 +143,7 @@
                   <td>Friend</td> <!--do not put this by default-->
                   <td>
                     <!--BACKEND: goes to friend's profile without the user manually typing info in-->
-                    <button onclick="location.href='/profile'">Profile</button>
+                    <button onclick="location.href='/client/profile'">Profile</button>
                   </td>
                   <!--BACKEND: unfriend-->
                   <td>
@@ -168,7 +168,7 @@
                   <td>Friend</td> <!--do not put this by default-->
                   <td>
                     <!--BACKEND: goes to friend's profile without the user manually typing info in-->
-                    <button onclick="location.href='/profile'">Profile</button>
+                    <button onclick="location.href='/client/profile'">Profile</button>
                   </td>
                   <!--BACKEND: add to both users' lists of friends-->
                   <td>
