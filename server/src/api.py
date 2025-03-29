@@ -68,3 +68,11 @@ def login(user: LoginUser, response: Response, con: sqlite3.Connection = Depends
 @user_router.get("")
 def get_user(target_user_id: int, con: sqlite3.Connection = Depends(db.get_db), user_id = Depends(auth.validate_user_cookie)):
     return db.get_user_info(con, target_user_id, user_id)
+
+@user_router.post("/add_friend")
+def add_friend(target_user_id: int, con: sqlite3.Connection = Depends(db.get_db), user_id = Depends(auth.validate_user_cookie)):
+    try:
+        assert target_user_id != user_id
+        db.add_friend(con, min(target_user_id, user_id), max(target_user_id, user_id))
+    except:
+        pass

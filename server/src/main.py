@@ -19,10 +19,6 @@ def main():
         allow_headers=["*"],  # Allows all headers
     )
 
-    @app.get("/user")
-    def get_user(user_id: int, con: sqlite3.Connection = Depends(db.get_db)):
-        return db.get_user_info(con, user_id)
-
     app.include_router(api.user_router)
 
     uvicorn.run(app, host="0.0.0.0", port=3000)

@@ -118,3 +118,10 @@ def get_login_info(db: sqlite3.Connection, user_id: int):
                    """, (user_id, ))
     return cursor.fetchone()
 
+def add_friend(db: sqlite3.Connection, user_a: int, user_b: int):
+    cursor = db.cursor() 
+    cursor.execute("""
+        INSERT INTO users_friendships_junction (user_id1, user_id2)
+        VALUES (?, ?)
+    """, (user_a, user_b))
+    db.commit()
