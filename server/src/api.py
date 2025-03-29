@@ -46,14 +46,25 @@ def login(user: LoginUser, response: Response, con: sqlite3.Connection = Depends
         info = db.get_login_info(con, user.id)
         if auth.login_user(user.password, info["salt"], info["password"]):
             logger.info(f"successful login for user_id: {user.id}")
-            return {"token": "TODO"}
+            token = auth.generate_jwt(user.id)
+
+            # set cookie for response, browser will handle automatically
+            response.set_cookie(
+                key="access_token",
+                value=token,
+                httponly=True,  # prevent javascript access (xss protection)
+                secure=True,  # only send over https
+                samesite="lax"  # protect against csrf
+            )
+
+            response.status_code = status.HTTP_200_OK
         else:
             response.status_code = status.HTTP_401_UNAUTHORIZED
 
-    except Exception as e:
+    except Exception:
         logger.info(f"user_id: {user.id} not found!")
         response.status_code = status.HTTP_404_NOT_FOUND
 
-# @user_router.get("")
-# def get_user(user_id: int, con: sqlite3.Connection = Depends(db.get_db)):
-#     return db.get_user_info(con, user_id)
+@user_router.get("")
+def get_user(target_user_id: int, con: sqlite3.Connection = Depends(db.get_db), user_id = Depends(auth.validate_user_cookie)):
+    return db.get_user_info(con, target_user_id, user_id)

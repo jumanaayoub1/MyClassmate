@@ -68,7 +68,7 @@ def get_db():
         db.close()
 
 
-def get_user_info(db: sqlite3.Connection, target_id: int):
+def get_user_info(db: sqlite3.Connection, target_id: int, source_id: int):
     cursor = db.cursor()
     cursor.execute(
         """
