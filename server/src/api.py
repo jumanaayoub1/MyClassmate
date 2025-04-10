@@ -53,7 +53,7 @@ def login(user: LoginUser, response: Response, con: sqlite3.Connection = Depends
                 key="access_token",
                 value=token,
                 httponly=True,  # prevent javascript access (xss protection)
-                secure=True,  # only send over https
+                secure=False,  # only send over https
                 samesite="lax"  # protect against csrf
             )
 

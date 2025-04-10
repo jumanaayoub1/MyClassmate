@@ -2,7 +2,10 @@ import bcrypt
 import jwt
 import datetime
 import os
-from fastapi import Request, HTTPException
+from fastapi import Request, HTTPException, Cookie, status
+
+import logging
+logger = logging.getLogger(__name__)
 
 
 def hash_password(plaintext_password: str) -> tuple[str, str]:
@@ -40,19 +43,19 @@ def generate_jwt(user_id: int):
     token = jwt.encode(payload, secret_key, algorithm="HS256")
     return token
 
-def validate_user_cookie(request: Request):
-    auth_header = request.headers.get("Authorization")
-    
-    if not auth_header or not auth_header.startswith("Bearer "):
+def validate_user_cookie(access_token: str = Cookie(None)): 
+    logger.info(f"COOKIE: {access_token}")
+    if not access_token:
         raise HTTPException(status_code=401, detail="Invalid token")
-
-    token = auth_header.split(" ")[1]
 
     try:
         secret_key = os.environ.get("JWT_KEY", "testing_key")
-        payload = jwt.decode(token, secret_key, algorithms=["HS256"])
-        return {"user_id": payload["user_id"]}
+        payload = jwt.decode(access_token, secret_key, algorithms=["HS256"])
+        user_id: str = payload.get("user_id")
+        if user_id is None:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+        return user_id
     except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Token expired")
-    except jwt.InvalidTokenError:
-        raise HTTPException(status_code=401, detail="Invalid token")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token expired")
+    except jwt.PyJWTError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token invalid")
