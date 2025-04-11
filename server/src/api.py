@@ -9,6 +9,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 user_router = APIRouter(prefix="/user", tags=["user"])
+classes_router = APIRouter(prefix="/classes", tags=["classes"])
 
 class RegisterUser(BaseModel):
     id: int
@@ -69,10 +70,37 @@ def login(user: LoginUser, response: Response, con: sqlite3.Connection = Depends
 def get_user(target_user_id: int, con: sqlite3.Connection = Depends(db.get_db), user_id = Depends(auth.validate_user_cookie)):
     return db.get_user_info(con, target_user_id, user_id)
 
-@user_router.post("/add_friend")
-def add_friend(target_user_id: int, con: sqlite3.Connection = Depends(db.get_db), user_id = Depends(auth.validate_user_cookie)):
+class AddFriendModel(BaseModel):
+    target_user: int
+
+@user_router.post("/friends/add")
+def add_friend(params: AddFriendModel, con: sqlite3.Connection = Depends(db.get_db), user_id = Depends(auth.validate_user_cookie)):
     try:
-        assert target_user_id != user_id
-        db.add_friend(con, min(target_user_id, user_id), max(target_user_id, user_id))
+        assert params.target_user != user_id
+        db.add_friend(con, user_id, params.target_user)
+    except:
+        pass
+
+@user_router.post("/friends/accept")
+def accept_friend(params: AddFriendModel, con: sqlite3.Connection = Depends(db.get_db), user_id = Depends(auth.validate_user_cookie)):
+    try:
+        assert params.target_user != user_id
+        db.accept_friend(con, user_id, params.target_user)
+    except:
+        pass
+
+
+class EnrollModel(BaseModel):
+    major: str
+    code: int
+    section: int
+
+@classes_router.post("/enroll")
+def enroll_class(params: EnrollModel, con: sqlite3.Connection = Depends(db.get_db), user_id = Depends(auth.validate_user_cookie)):
+    major = params.major.upper()
+    class_id = db.possibly_create_class_and_get_id(con, major, params.code, params.section)
+    
+    try:
+        db.enroll_in_class(con, user_id, class_id)
     except:
         pass

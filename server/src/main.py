@@ -20,6 +20,7 @@ def main():
     )
 
     app.include_router(api.user_router)
+    app.include_router(api.classes_router)
 
     uvicorn.run(app, host="0.0.0.0", port=3003)
 
