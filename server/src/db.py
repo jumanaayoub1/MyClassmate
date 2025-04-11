@@ -200,3 +200,18 @@ def enroll_in_class(
     """, (user_id, class_id)
     )
     db.commit()
+
+def update_user_fields(
+    db: sqlite3.Connection,
+    user_id: int,
+    update: dict
+):
+    cursor = db.cursor()
+
+    fields = [field for field in update]
+    values = [update[field] for field in fields] + [str(user_id)]
+    clause = ', '.join([f"{x} = ?" for x in fields])
+
+    query = f"UPDATE users SET {clause} WHERE id = ?"
+    cursor.execute(query, values) 
+    db.commit()

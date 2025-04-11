@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, status, Response
 import sqlite3
 from pydantic import BaseModel
+from typing import Literal
 
 import db
 import auth
@@ -88,6 +89,20 @@ def accept_friend(params: AddFriendModel, con: sqlite3.Connection = Depends(db.g
         db.accept_friend(con, user_id, params.target_user)
     except:
         pass
+
+class UpdateProfileModel(BaseModel):
+    username: str | None = None
+    privacy: Literal["public", "private"] | None = None
+    major: str | None = None
+
+@user_router.patch("/profile")
+def update_profile(params: UpdateProfileModel, response: Response, con: sqlite3.Connection = Depends((db.get_db)), user_id = Depends(auth.validate_user_cookie)):
+    update = params.model_dump(exclude_none=True)
+    if not update:
+        response.status_code = status.HTTP_400_BAD_REQUEST
+        return
+
+    db.update_user_fields(con, user_id, update)
 
 
 class EnrollModel(BaseModel):
