@@ -188,10 +188,7 @@ th, td {
 
 }
 .classmate-result {
-    margin: 0.2rem;
-    padding: 0.5rem;
-    border: 0.09rem solid #000000;
-    border-radius: 5%;
+    margin: 0 0.3rem;
     min-width: fit-content;
     flex: 20%;
 }
