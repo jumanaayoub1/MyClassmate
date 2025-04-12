@@ -193,8 +193,8 @@ th, td {
     flex: 20%;
 } */
 
-/*MESSAGES PAGE*/
-.message-recipient, #message-recipients-title {
+/*MESSAGES PAGE-delete*/
+/* .message-recipient, #message-recipients-title {
     padding: 0.75rem;
     padding: 0.75rem;
     border-right: 0.09rem solid #dddddd;
@@ -216,4 +216,4 @@ th, td {
     position: fixed;
     max-width: 87%;
     bottom: 1rem;
-}
+} */
