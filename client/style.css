@@ -174,8 +174,8 @@ th, td {
     width: 33%;
 }
 
-/*CLASSMATES PAGE*/
-.classmates-section {
+/*CLASSMATES PAGE - delete*/ 
+/* .classmates-section {
     margin: 1rem 0;
     text-align: center;
 }
@@ -191,7 +191,7 @@ th, td {
     margin: 0 0.3rem;
     min-width: fit-content;
     flex: 20%;
-}
+} */
 
 /*MESSAGES PAGE*/
 .message-recipient, #message-recipients-title {
