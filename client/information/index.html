@@ -36,12 +36,16 @@
             <li class="nav-item">
               <a class="page-name" href="/client/information">Add / Search</a>
             </li>
+            <!-- delete
             <li class="nav-item">
               <a class="page-name" href="/client/classmates">Classmates</a>
             </li>
+             -->
+            <!-- delete
             <li class="nav-item">
               <a class="page-name" href="/client/messages">View Messages</a>
             </li>
+             -->
             <li class="nav-item log-out-item">
               <!--BACKEND: log out user-->
               <a class="page-name log-out-name" href="/client">Log out</a>
@@ -74,11 +78,12 @@
             
             <div class="gap"></div>
 
-            <!--term-->
+            <!-- delete - term-->
+            <!-- delete            
             <label for="term-input">Term</label>
             <p>Abbreviation (F24 or S25)</p>
             <input type="text" id="term-input">
-            
+             -->
             <div class="gap"></div>
 
             <!--course subject-->
@@ -104,11 +109,11 @@
             <div class="container">
               <!--BACKEND: update user profile with the entered information and navigate to the page-->
               <!--not all information needs to be inputted to work-->
-              <button id="update-profile-button" onclick="location.href='/client/profile'">Update Profile</button>
+              <button id="update-profile-button" onclick="location.href='/client/profile'">Update My Profile</button>
               <div class="gap"></div>
               <!--BACKEND: show classmates with the entered information and navigate to the page-->
               <!--not all information needs to be inputted to work-->
-              <button id="search-button" onclick="location.href='/client/classmates'">Search Classmates</button>
+              <button onclick="location.href='/client/profile'">Search Classmate</button>
             </div>
           </div>
         </main>

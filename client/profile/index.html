@@ -36,12 +36,16 @@
             <li class="nav-item">
               <a class="page-name" href="/client/information">Add / Search</a>
             </li>
+            <!-- delete
             <li class="nav-item">
               <a class="page-name" href="/client/classmates">Classmates</a>
             </li>
+             -->
+            <!-- delete
             <li class="nav-item">
               <a class="page-name" href="/client/messages">View Messages</a>
             </li>
+             -->
             <li class="nav-item log-out-item">
               <!--BACKEND: log out user-->
               <a class="page-name log-out-name" href="/client">Log out</a>
@@ -90,12 +94,14 @@
 
             <!--courses section-->
             <h3>Courses</h3>
-            <!--BACKEND: show course database for user for selected term-->
+            <!--delete - BACKEND: show course database for user for selected term-->
+            <!-- delete            
             <label for="profile-courses-term"></label>
             <select name="profile-courses-term" id="profile-courses-term">
               <option value="s25">Spring 2025</option>
               <option value="f24">Fall 2024</option>
-            </select>
+            </select> 
+            -->
 
             <div class="gap"></div>
 
@@ -105,18 +111,22 @@
               <thead>
                 <tr>
                   <th>Course</th>
+                  <!-- delete
                   <th>Find Classmates</th>
+                  -->
                   <th>Remove Course</th>
                 </tr>
               </thead>
               <tr>
                 <td>[CMPE 131-3]</td> <!--Subject Number-Section; maybe put this class by default for Spring 2025-->
+                <!-- delete
                 <td>
-                  <!--BACKEND: searches for classmates in the course without the user manually typing info in-->
-                  <!--retrieves information from the backend to complete the search and navigates to the page-->
-                  <!--even when viewing classmates's profile, may be valuable to user to find other classmates-->
+                  BACKEND: searches for classmates in the course without the user manually typing info in
+                  retrieves information from the backend to complete the search and navigates to the page
+                  even when viewing classmates's profile, may be valuable to user to find other classmates
                   <button onclick="location.href='/client/classmates'">Search</button>
                 </td>
+                -->
                 <!--BACKEND: if this profile is user's profile, remove button to delete course-->
                 <!--if this profile is not user's profile, do not create column-->
                 <td>
