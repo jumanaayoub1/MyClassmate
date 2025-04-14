@@ -74,22 +74,40 @@ def get_db():
 
 def get_user_info(db: sqlite3.Connection, target_id: int, source_id: int):
     cursor = db.cursor()
-    cursor.execute(
-    """
-        SELECT * FROM users
+
+    # Step 1: Fetch safe user info (no password, no salt)
+    cursor.execute("""
+        SELECT id, username, privacy, major
+        FROM users
         WHERE id = ?
         AND (
             privacy = 'public'
             OR EXISTS (
                 SELECT 1 FROM users_friendships_junction
                 WHERE
-                    (user_id1 = ? AND user_id2 = ? AND pending_user_id IS NULL)
+                    user_id1 = ? AND user_id2 = ? AND pending_user_id IS NULL
             )
         )
-        """,
-        (target_id, min(source_id, target_id), max(target_id, source_id)),
-        )
-    return cursor.fetchone()
+    """, (target_id, min(source_id, target_id), max(target_id, source_id)))
+
+    user_row = cursor.fetchone()
+    if not user_row:
+        return None
+
+    user_info = dict(user_row)
+
+    # Step 2: Fetch user's enrolled classes
+    cursor.execute("""
+        SELECT c.major_code, c.class_code, c.section
+        FROM classes c
+        JOIN users_classes_junction ucj ON c.id = ucj.class_id
+        WHERE ucj.user_id = ?
+    """, (target_id, ))
+
+    classes = [dict(row) for row in cursor.fetchall()]
+    user_info["classes"] = classes
+
+    return user_info
 
 
 def default_username():
@@ -196,9 +214,8 @@ def enroll_in_class(
     cursor.execute("""
         INSERT INTO users_classes_junction (user_id, class_id)
         VALUES (?, ?)
-        ON CONFLICT (PRIMARY KEY) DO NOTHING
-    """, (user_id, class_id)
-    )
+        ON CONFLICT(user_id, class_id) DO NOTHING
+    """, (user_id, class_id)) #SOMETHING HERE CHANGED
     db.commit()
 
 def update_user_fields(
@@ -214,4 +231,12 @@ def update_user_fields(
 
     query = f"UPDATE users SET {clause} WHERE id = ?"
     cursor.execute(query, values) 
+    db.commit()
+
+def remove_class(db: sqlite3.Connection, user_id: int, class_id: int):
+    cursor = db.cursor()
+    cursor.execute("""
+        DELETE FROM users_classes_junction
+        WHERE user_id = ? AND class_id = ?
+    """, (user_id, class_id))
     db.commit()

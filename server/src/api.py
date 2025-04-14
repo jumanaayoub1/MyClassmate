@@ -3,6 +3,8 @@ import sqlite3
 from pydantic import BaseModel
 from typing import Literal
 
+from .api_py_server import user_router, classes_router
+
 import db
 import auth
 
@@ -119,3 +121,17 @@ def enroll_class(params: EnrollModel, con: sqlite3.Connection = Depends(db.get_d
         db.enroll_in_class(con, user_id, class_id)
     except:
         pass
+
+class RemoveModel(BaseModel):
+    major: str
+    code: int
+    section: int
+
+@classes_router.post("/remove")
+def remove_class(params: RemoveModel, con: sqlite3.Connection = Depends(db.get_db), user_id = Depends(auth.validate_user_cookie)):
+    major = params.major.upper()
+    class_id = db.possibly_create_class_and_get_id(con, major, params.code, params.section)
+
+    db.remove_class(con, user_id, class_id)
+
+    return {"status": "success", "message": f"Removed class {major}-{params.code} Sec {params.section}"}
