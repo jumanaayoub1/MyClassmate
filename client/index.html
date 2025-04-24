@@ -1,27 +1,23 @@
-<!--log in page content-->
-<!--websiteName.com/client-->
-<!--user input of ID and password-->
 <!DOCTYPE html>
 <html>
   <head>
     <title>MyClassmates</title>
 
-    <!--characters that can be used in HTML document-->
+    <!-- UTF-8 character encoding for full character support -->
     <meta charset="utf-8" />
 
-    <!--page made to match size of device screen-->
+    <!-- Responsive design for all screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!--link to stylesheet-->
+    <!-- Link to external stylesheet for styling -->
     <link rel="stylesheet" href="/client/style.css" />
 
-    <!--link to JavaScript file-->
+    <!-- Link to main JavaScript logic (deferred until after HTML loads) -->
     <script src="/client/script.js" defer></script>
-
   </head>
 
   <body style="background-color:#ebebed">
-
+    <!-- Website title -->
     <header>
       <div id="log-in-title-section">
         <h1>MyClassmates</h1>
@@ -29,28 +25,42 @@
     </header>
 
     <main>
-      <!--log in content-->
       <div id="log-in-input-section">
         <div id="log-in-rectangle">
           <p id="log-in-text">Sign In</p>
-          <!--BACKEND: show "Unable to sign in" only after pressing sign in button and id and password do not work-->
-          <p id="error-message">Error: Unable to Sign In</p> 
-          <div class="gap"></div>
-          <!--ID number-->
-          <label for="id-input">SJSU ID Number</label>
-          <p>#########</p>
-          <input type="text" id="id-input">
-          <div class="gap"></div>
-          <label for="password-input">Password</label>
-          <!--password (Will not actually use students' real passwords)-->
-          <!--BACKEND: Decide easiest way to simulate password-->
-          <p>First-Time Users: Set Password Here</p>
-          <input type="password" id="password-input">
 
-          <!--sign in button-->
-          <!--BACKEND: verify id and password work, and then send to the next page (information page)-->
-          <!--BACKEND: update onclick to method-->
-          <button onclick="location.href='/client/information'">Sign In</button>
+          <!-- Error message shown only when login fails -->
+          <p id="error-message">Error: Unable to Sign In</p>
+
+          <!-- Login form -->
+          <form id="login-form">
+            <!-- SJSU student ID input -->
+            <label for="id-input">SJSU ID Number</label>
+            <p>#########</p>
+            <input type="text" id="id-input" required />
+
+            <div class="gap"></div>
+
+            <!-- Password input -->
+            <label for="password-input">Password</label>
+            <p>First-Time Users: Set Password Here</p>
+            <input type="password" id="password-input" required />
+
+            <div class="gap"></div>
+
+            <!-- Submit login form -->
+            <button type="submit">Sign In</button>
+          </form>
+
+          <div class="gap"></div>
+
+          <!-- Registration form -->
+          <h2>Register</h2>
+          <form id="register-form">
+            <input type="text" id="register-username" placeholder="Username" required />
+            <input type="password" id="register-password" placeholder="Password" required />
+            <button type="submit">Register</button>
+          </form>
         </div>
       </div>
     </main>
