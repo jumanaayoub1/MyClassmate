@@ -1,23 +1,15 @@
+<!-- Original login page content + new login/register functionality -->
 <!DOCTYPE html>
 <html>
   <head>
     <title>MyClassmates</title>
-
-    <!-- UTF-8 character encoding for full character support -->
     <meta charset="utf-8" />
-
-    <!-- Responsive design for all screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Link to external stylesheet for styling -->
     <link rel="stylesheet" href="/client/style.css" />
-
-    <!-- Link to main JavaScript logic (deferred until after HTML loads) -->
     <script src="/client/script.js" defer></script>
   </head>
 
   <body style="background-color:#ebebed">
-    <!-- Website title -->
     <header>
       <div id="log-in-title-section">
         <h1>MyClassmates</h1>
@@ -25,36 +17,34 @@
     </header>
 
     <main>
+      <!-- Login Form UI -->
       <div id="log-in-input-section">
         <div id="log-in-rectangle">
           <p id="log-in-text">Sign In</p>
 
-          <!-- Error message shown only when login fails -->
+          <!-- Hidden error message shown only on failed login -->
           <p id="error-message">Error: Unable to Sign In</p>
 
-          <!-- Login form -->
+          <!-- LOGIN FORM -->
           <form id="login-form">
-            <!-- SJSU student ID input -->
             <label for="id-input">SJSU ID Number</label>
             <p>#########</p>
             <input type="text" id="id-input" required />
 
             <div class="gap"></div>
 
-            <!-- Password input -->
             <label for="password-input">Password</label>
             <p>First-Time Users: Set Password Here</p>
             <input type="password" id="password-input" required />
 
             <div class="gap"></div>
 
-            <!-- Submit login form -->
             <button type="submit">Sign In</button>
           </form>
 
           <div class="gap"></div>
 
-          <!-- Registration form -->
+          <!-- REGISTER FORM (added feature) -->
           <h2>Register</h2>
           <form id="register-form">
             <input type="text" id="register-username" placeholder="Username" required />
