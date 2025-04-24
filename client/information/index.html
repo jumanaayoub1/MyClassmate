@@ -64,57 +64,42 @@
         <main class="main-with-side-nav">
           <!--courses content-->
           <div class="main-content">
-            <!--name-->
-            <label for="name-input">Name</label>
-            <p>First Last</p>
-            <input type="text" id="name-input">
-            
-            <div class="gap"></div>
-
-            <!--major-->
-            <label for="major-input">Major</label>
-            <p>Abbreviation (ex: CE, IE, SE)</p>
-            <input type="text" id="major-input">
-            
-            <div class="gap"></div>
-
-            <!-- delete - term-->
-            <!-- delete            
-            <label for="term-input">Term</label>
-            <p>Abbreviation (F24 or S25)</p>
-            <input type="text" id="term-input">
-             -->
-            <div class="gap"></div>
-
-            <!--course subject-->
-            <label for="course-subject-input">Course Subject</label>
-            <p>Abbreviation (ex: CMPE)</p>
-            <input type="text" id="course-name-input">
-
-            <div class="gap"></div>
-            
-            <!--course number-->
-            <label for="course-number-input">Course Number</label>
-            <p>(ex: 131)</p>
-            <input type="text" id="course-number-input">
-            
-            <div class="gap"></div>
-
-            <!--course section-->
-            <label for="course-section-input">Course Section</label>
-            <p>(ex: 3)</p>
-            <input type="text" id="course-section-input">
-            
-            <!--buttons-->
-            <div class="container">
-              <!--BACKEND: update user profile with the entered information and navigate to the page-->
-              <!--not all information needs to be inputted to work-->
-              <button id="update-profile-button" onclick="location.href='/client/profile'">Update My Profile</button>
+            <form id="class-form">
+              <label for="course-name-input">Course Subject</label>
+              <p>Abbreviation (ex: CMPE)</p>
+              <input type="text" id="course-name-input" required>
+              
               <div class="gap"></div>
-              <!--BACKEND: show classmates with the entered information and navigate to the page-->
-              <!--not all information needs to be inputted to work-->
-              <button onclick="location.href='/client/profile'">Search Classmate</button>
-            </div>
+              
+              <label for="course-number-input">Course Number</label>
+              <p>(ex: 131)</p>
+              <input type="number" id="course-number-input" required>
+              
+              <div class="gap"></div>
+
+              <label for="course-section-input">Course Section</label>
+              <p>(ex: 3)</p>
+              <input type="number" id="course-section-input" required>
+              
+              <div class="gap"></div>
+
+              <button type="submit">Enroll in Class</button>
+            </form>
+
+            <div class="gap"></div>
+
+            <h3>My Classes</h3>
+            <table id="classes-table">
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>Remove Course</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Classes will be populated by JavaScript -->
+              </tbody>
+            </table>
           </div>
         </main>
       </div>

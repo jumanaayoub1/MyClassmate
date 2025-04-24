@@ -82,13 +82,14 @@ def get_user_info(db: sqlite3.Connection, target_id: int, source_id: int):
         WHERE id = ?
         AND (
             privacy = 'public'
+            OR ? = ?  -- Allow users to see their own profile
             OR EXISTS (
                 SELECT 1 FROM users_friendships_junction
                 WHERE
                     user_id1 = ? AND user_id2 = ? AND pending_user_id IS NULL
             )
         )
-    """, (target_id, min(source_id, target_id), max(target_id, source_id)))
+    """, (target_id, target_id, source_id, min(source_id, target_id), max(target_id, source_id)))
 
     user_row = cursor.fetchone()
     if not user_row:
@@ -137,7 +138,7 @@ def insert_user(
     salt, password = auth.hash_password(user_password)
 
     if username is None:
-        username = default_username
+        username = default_username()
     if privacy is None:
         privacy = UserPrivacy.PRIVATE.value
     if major is None:
@@ -240,3 +241,35 @@ def remove_class(db: sqlite3.Connection, user_id: int, class_id: int):
         WHERE user_id = ? AND class_id = ?
     """, (user_id, class_id))
     db.commit()
+
+def get_friends(db: sqlite3.Connection, user_id: int):
+    cursor = db.cursor()
+    
+    # Get accepted friends
+    cursor.execute("""
+        SELECT u.id, u.username
+        FROM users u
+        JOIN users_friendships_junction ufj ON 
+            (ufj.user_id1 = ? AND ufj.user_id2 = u.id) OR
+            (ufj.user_id2 = ? AND ufj.user_id1 = u.id)
+        WHERE ufj.pending_user_id IS NULL
+    """, (user_id, user_id))
+    
+    accepted_friends = [dict(row) for row in cursor.fetchall()]
+    
+    # Get pending friend requests
+    cursor.execute("""
+        SELECT u.id, u.username
+        FROM users u
+        JOIN users_friendships_junction ufj ON 
+            (ufj.user_id1 = ? AND ufj.user_id2 = u.id) OR
+            (ufj.user_id2 = ? AND ufj.user_id1 = u.id)
+        WHERE ufj.pending_user_id = ?
+    """, (user_id, user_id, user_id))
+    
+    pending_requests = [dict(row) for row in cursor.fetchall()]
+    
+    return {
+        "accepted_friends": accepted_friends,
+        "pending_requests": pending_requests
+    }

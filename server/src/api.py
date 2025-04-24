@@ -3,8 +3,6 @@ import sqlite3
 from pydantic import BaseModel
 from typing import Literal
 
-from .api_py_server import user_router, classes_router
-
 import db
 import auth
 
@@ -36,6 +34,7 @@ def register_user(user: RegisterUser, response: Response, con: sqlite3.Connectio
         logger.info(f"registered user: {user.id}")
         response.status_code = status.HTTP_201_CREATED
     except Exception as e:
+        print(e)
         logger.info(f"failed to register user: {user.id}, error: {e}")
         response.status_code = status.HTTP_409_CONFLICT
 
@@ -56,7 +55,7 @@ def login(user: LoginUser, response: Response, con: sqlite3.Connection = Depends
             response.set_cookie(
                 key="access_token",
                 value=token,
-                httponly=True,  # prevent javascript access (xss protection)
+                httponly=False,  # prevent javascript access (xss protection)
                 secure=False,  # only send over https
                 samesite="lax"  # protect against csrf
             )
@@ -99,7 +98,15 @@ class UpdateProfileModel(BaseModel):
 
 @user_router.patch("/profile")
 def update_profile(params: UpdateProfileModel, response: Response, con: sqlite3.Connection = Depends((db.get_db)), user_id = Depends(auth.validate_user_cookie)):
-    update = params.model_dump(exclude_none=True)
+    # Filter out None values and empty strings for username
+    update = {}
+    if params.username is not None and params.username != "":
+        update["username"] = params.username
+    if params.privacy is not None:
+        update["privacy"] = params.privacy
+    if params.major is not None:  # Allow empty string for major
+        update["major"] = params.major
+    
     if not update:
         response.status_code = status.HTTP_400_BAD_REQUEST
         return
@@ -135,3 +142,7 @@ def remove_class(params: RemoveModel, con: sqlite3.Connection = Depends(db.get_d
     db.remove_class(con, user_id, class_id)
 
     return {"status": "success", "message": f"Removed class {major}-{params.code} Sec {params.section}"}
+
+@user_router.get("/friends")
+def get_friends(con: sqlite3.Connection = Depends(db.get_db), user_id = Depends(auth.validate_user_cookie)):
+    return db.get_friends(con, user_id)

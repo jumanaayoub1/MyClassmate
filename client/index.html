@@ -18,6 +18,10 @@
     <!--link to JavaScript file-->
     <script src="/client/script.js" defer></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet">
+
   </head>
 
   <body style="background-color:#ebebed">
@@ -31,27 +35,27 @@
     <main>
       <!--log in content-->
       <div id="log-in-input-section">
-        <div id="log-in-rectangle">
-          <p id="log-in-text">Sign In</p>
+        <form id="login-form" class="log-in-rectangle">
+          <p class="log-in-text">Sign In</p>
           <!--BACKEND: show "Unable to sign in" only after pressing sign in button and id and password do not work-->
           <p id="error-message">Error: Unable to Sign In</p> 
           <div class="gap"></div>
           <!--ID number-->
           <label for="id-input">SJSU ID Number</label>
-          <p>#########</p>
-          <input type="text" id="id-input">
+          <input type="number" id="id-input" required>
           <div class="gap"></div>
           <label for="password-input">Password</label>
           <!--password (Will not actually use students' real passwords)-->
           <!--BACKEND: Decide easiest way to simulate password-->
-          <p>First-Time Users: Set Password Here</p>
-          <input type="password" id="password-input">
-
+          <p>First-Time Users: Enter your desired password</p>
+          <input type="password" id="password-input" required>
+          <div class="gap"></div>
           <!--sign in button-->
           <!--BACKEND: verify id and password work, and then send to the next page (information page)-->
           <!--BACKEND: update onclick to method-->
-          <button onclick="location.href='/client/information'">Sign In</button>
-        </div>
+          <button type="submit">Sign In</button>
+          <div class="gap"></div>
+        </form>
       </div>
     </main>
   </body>

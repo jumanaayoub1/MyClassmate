@@ -17,89 +17,106 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #ebebed;
+}
+
 .gap {
-    margin: 1rem;
+    margin: 1rem 0;
 }
 
 /*TEXT*/
 h1, h2, h3 {
     font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 700;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
 }
 
 p, table {
     font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
 }
 
 /*INPUT*/
 label {
     font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 600;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
-input[type=text], input[type=password]{
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
     padding: 0.6rem;
     width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #1662dd;
+    box-shadow: 0 0 0 2px rgba(22, 98, 221, 0.2);
 }
 
 /*BUTTONS*/
 button {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-top: 1rem;
+    padding: 1rem;
     width: 100%;
     background-color: #1662dd;
-    color:#FFFFFF;
+    color: #FFFFFF;
     border: none;
-    border-radius: 5%;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #1b88f4;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 /*NAVIGATION BAR*/
-nav, .sidebar {
+.sidebar {
     width: 10rem;
+    background-color: #f5f5f5;
+    min-height: 100vh;
 }
 
 .nav-list {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 .nav-item {
     padding: 0.75rem;
-    border-right: 0.09rem solid #dddddd;
-    border-bottom: 0.09rem solid #dddddd;
-    background-color: #f5f5f5;
-    
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .log-out-item {
     background-color: #ba4533;
 }
 
-.page-name, .message-recipient-name{
+.page-name {
     text-decoration: none;
     color: #0055A2;
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 300;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
 }
 
 .log-out-name {
     color: #FFFFFF;
 }
 
-.page-name:hover, .message-recipient-name:hover {
+.page-name:hover {
     color: #1b88f4;
 }
 
@@ -110,7 +127,6 @@ nav, .sidebar {
 /*PAGE FORMATTING*/
 .container{
     display: flex;
-    
 }
 
 .with-side-nav {
@@ -128,6 +144,7 @@ nav, .sidebar {
 
 .main-content {
     margin: 1rem;
+    max-width: 800px;
 }
 
 /*LOG IN PAGE*/
@@ -135,6 +152,7 @@ nav, .sidebar {
     text-align: center;
     background-color: #FFFFFF;
     padding: 1rem;
+    margin-bottom: 2rem;
 }
 
 #log-in-input-section {
@@ -144,34 +162,42 @@ nav, .sidebar {
     margin: 10vh;
 }
 
-#log-in-rectangle {
-    align-items: center;
+.log-in-rectangle {
     background-color: #FFFFFF;
-    border: 0.1rem solid #dddddd;
-    border-radius: 1%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     padding: 2rem;
+    width: 100%;
+    max-width: 400px;
 }
 
-#log-in-text {
+.log-in-text {
     text-align: center;
     margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
 /*PROFILE PAGE*/
 #profile-visibility-section {
-    text-align: center;
+    margin-bottom: 2rem;
 }
 
 /*INFORMATION PAGE*/
 table {
-    border-collapse: collapse;
     width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
 }
 
 th, td {
-    border: 0.1rem solid #000000;
-    padding: 0.5rem;
-    width: 33%;
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f5f5f5;
+    font-weight: 600;
 }
 
 /*CLASSMATES PAGE - delete*/ 
@@ -217,3 +243,25 @@ th, td {
     max-width: 87%;
     bottom: 1rem;
 } */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .nav-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .nav-item {
+        flex: 1;
+        text-align: center;
+    }
+}
