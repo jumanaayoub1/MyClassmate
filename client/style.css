@@ -200,50 +200,6 @@ th {
     font-weight: 600;
 }
 
-/*CLASSMATES PAGE - delete*/ 
-/* .classmates-section {
-    margin: 1rem 0;
-    text-align: center;
-}
-
-.classmates-container {
-    margin: 1rem 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-}
-.classmate-result {
-    margin: 0 0.3rem;
-    min-width: fit-content;
-    flex: 20%;
-} */
-
-/*MESSAGES PAGE-delete*/
-/* .message-recipient, #message-recipients-title {
-    padding: 0.75rem;
-    padding: 0.75rem;
-    border-right: 0.09rem solid #dddddd;
-    border-bottom: 0.09rem solid #dddddd;
-    background-color: #f5f5f5;
-}
-
-.message {
-    display: flex;
-    margin: 1rem 0;
-}
-
-.message-sender-name {
-    margin-right: 0.5rem;
-    font-weight: 600;
-}
-
-#message-draft {
-    position: fixed;
-    max-width: 87%;
-    bottom: 1rem;
-} */
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
