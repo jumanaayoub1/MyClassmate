@@ -11,9 +11,16 @@ def main():
 
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=[
-            "*"
-        ],
+        allow_origins = [
+            "http://localhost:8000",  # Common frontend port
+            "http://127.0.0.1:8000",  # Alternative localhost
+            "http://localhost:3000",  # Common React/Vue port
+            "http://127.0.0.1:3000",  # Alternative localhost
+            "http://localhost:8080",  # Common alternative port
+            "http://127.0.0.1:8080",  # Alternative localhost
+            "http://localhost:5500",  # Common alternative port
+            "http://127.0.0.1:5500",  # Alternative localhost
+        ],  
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],

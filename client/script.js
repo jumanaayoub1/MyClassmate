@@ -34,7 +34,7 @@ async function login(event) {
 
         if (response.ok) {
             window.location.href = '/client/information';
-        } else if (response.status === 404) {
+        } else if (response.status === 404 || response.status === 401 ) {
             console.log("User not found, automatically registering");
             // User not found, automatically register them
             const registerResponse = await fetch(`${API_BASE_URL}/user/register`, {
@@ -70,6 +70,7 @@ async function login(event) {
             showError('Invalid ID or password');
         }
     } catch (error) {
+        console.error('Login error:', error);
         showError('Login failed. Please try again.');
     }
 }
@@ -274,6 +275,7 @@ async function register(event) {
 
 // Get current user ID from JWT token
 function getCurrentUserId() {
+    console.log("document.cookie:", document.cookie);
     const token = document.cookie.split('; ')
         .find(row => row.startsWith('access_token='))
         ?.split('=')[1];
