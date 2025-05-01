@@ -1,0 +1,13 @@
+{
+  auto_https off
+}
+
+:5000 {
+  handle /client/* {
+    reverse_proxy localhost:8000
+  }
+
+  handle {
+      reverse_proxy localhost:3003
+  }
+}

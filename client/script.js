@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = 'http://localhost:3003';
+const API_BASE_URL = 'https://archlinux.cinnamon-fort.ts.net';
 
 // Utility Functions
 async function handleApiError(response) {
