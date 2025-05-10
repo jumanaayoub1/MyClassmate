@@ -1,6 +1,7 @@
 import sqlite3
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 import uvicorn
 
 import db
@@ -8,6 +9,10 @@ import api
 
 def main():
     app = FastAPI()
+
+    @app.get("/")
+    async def redirect():
+        return RedirectResponse(url="/client/")
 
     app.add_middleware(
         CORSMiddleware,
