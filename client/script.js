@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = 'https://archlinux.cinnamon-fort.ts.net';
+const API_BASE_URL = 'https://localhost:3003';
 
 // Utility Functions
 async function handleApiError(response) {
@@ -78,7 +78,7 @@ async function login(event) {
 async function logout() {
     try {
         document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        window.location.href = '/client';
+        window.location.href = '/client/';
     } catch (error) {
         showError('Logout failed. Please try again.');
     }
@@ -262,7 +262,7 @@ async function register(event) {
         });
 
         if (response.status === 201) {
-            window.location.href = '/client';
+            window.location.href = '/client/';
         } else if (response.status === 409) {
             showError('User ID already exists');
         } else {
@@ -332,7 +332,7 @@ async function initializeProfilePage() {
     const userId = getCurrentUserId();
     if (!userId) {
         console.log("No user ID found");
-        window.location.href = '/client';
+        window.location.href = '/client/';
         return;
     }
 
@@ -384,7 +384,7 @@ async function initializeProfilePage() {
             }
         } else {
             if (!window.location.pathname.includes('/client') || window.location.pathname === '/client/') {
-                window.location.href = '/client';
+                window.location.href = '/client/';
             }
         }
     } catch (error) {
@@ -398,7 +398,7 @@ async function initializeInformationPage() {
     const userId = getCurrentUserId();
     if (!userId) {
         console.log("No user ID found");
-        window.location.href = '/client';
+        window.location.href = '/client/';
         return;
     }
 
@@ -418,7 +418,7 @@ async function initializeInformationPage() {
                 );
             }
         } else {
-            window.location.href = '/client';
+            window.location.href = '/client/';
         }
     } catch (error) {
         showError('Failed to load classes data');
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log("Checking authentication for protected page");
         const isAuthenticated = await checkAuth();
         if (!isAuthenticated) {
-            window.location.href = '/client';
+            window.location.href = '/client/';
             return;
         }
     }
